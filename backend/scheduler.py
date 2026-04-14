@@ -12,9 +12,10 @@ def generate_schedule(tasks):
         duration = int(t.get("duration", 1))
 
         schedule.append({
-            "task": t["name"],
-            "start_time": f"{current_time}:00",
-            "end_time": f"{current_time + duration}:00"
+            "task": task["name"],
+            "start_time": f"{start}:00",
+            "end_time": f"{start + duration}:00",
+            "note": "Optimized based on priority"
         })
 
         current_time += duration

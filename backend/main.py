@@ -47,3 +47,7 @@ def insights_api():
 @app.get("/chat")
 def chat_api(query: str):
     return {"response": chatbot(query)}
+
+@app.get("/status")
+def status():
+    return {"status": "AI system active"}
