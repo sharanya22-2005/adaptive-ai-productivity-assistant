@@ -12,11 +12,10 @@ from ai_module.insights import generate_insights
 from ai_module.predictions import TimePredictor
 from ai_module.recommendations import AITimeManager
 
-ai_manager = AITimeManager()
-
 
 app = FastAPI()
 predictor = TimePredictor()
+ai_manager = AITimeManager()
 # ✅ Allow frontend to connect
 app.add_middleware(
     CORSMiddleware,
