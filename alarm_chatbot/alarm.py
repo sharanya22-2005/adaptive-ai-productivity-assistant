@@ -1,6 +1,6 @@
 import time
 import threading
-import time
+
 
 def start_alarm(task_time, task_name):
     def run_alarm():
@@ -13,6 +13,8 @@ def start_alarm(task_time, task_name):
                 print(f"🔔 Reminder: {task_name} - Start now!")
                 break
 
+           time.sleep(30)
+
     threading.Thread(target=run_alarm).start()
 
-time.sleep(30)
+
