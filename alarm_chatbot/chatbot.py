@@ -12,5 +12,8 @@ def chatbot(query):
 
     elif "break" in query:
         return "Take a 10-15 minute break after long tasks."
+    
+    elif "tired" in query:
+        return "Take a short break and relax."
 
     return "I'm your AI assistant. Ask me about your tasks or productivity!"
