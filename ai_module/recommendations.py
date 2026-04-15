@@ -57,18 +57,21 @@ class AITimeManager:
     # 3. Detect Procrastination
     # -------------------------------
     def detect_procrastination(self):
-        df = self.data.copy()
+        if len(self.data) == 0:
+            return "No data yet"
 
+        df = self.data.copy()
         df["delay"] = df["duration"] - df["planned_duration"]
 
-        procrastination_score = df["delay"].mean()
+        score = df["delay"].mean()
 
-        if procrastination_score > 10:
+        if score > 10:
             return "High procrastination detected 🚨"
-        elif procrastination_score > 0:
+        elif score > 0:
             return "Moderate procrastination ⚠️"
         else:
             return "Good time discipline ✅"
+       
 
     # -------------------------------
     # 4. Generate Smart Recommendations
@@ -110,19 +113,3 @@ class AITimeManager:
 
         return "\n".join(recommendations)
 
-
-# -------------------------------
-# 🔥 Example Usage
-# -------------------------------
-if __name__ == "__main__":
-    ai = AITimeManager()
-
-    # Sample logs (simulate your day)
-    ai.log_task("Study", "09:00", "10:30", 60)
-    ai.log_task("Coding", "11:00", "13:00", 90)
-    ai.log_task("Gym", "17:00", "18:00", 60)
-    ai.log_task("Netflix", "20:00", "22:00", 60)
-    ai.log_task("Reading", "22:30", "23:30", 45)
-
-    print("\n📊 AI Recommendations:\n")
-    print(ai.generate_recommendations())

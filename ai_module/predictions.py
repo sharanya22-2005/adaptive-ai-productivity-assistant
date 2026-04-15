@@ -70,36 +70,4 @@ class TimePredictor:
             y = np.array(self.times)
             self.model.fit(X, y)
 
-# ------------------------------
-# CLI Interface
-# ------------------------------
-def main():
-    predictor = TimePredictor()
 
-    while True:
-        print("\n--- AI Time Manager ---")
-        print("1. Predict Task Duration")
-        print("2. Add Completed Task (Train AI)")
-        print("3. Exit")
-
-        choice = input("Choose: ")
-
-        if choice == "1":
-            task = input("Enter task description: ")
-            prediction = predictor.predict(task)
-            print(f"⏱ Estimated Time: {prediction} minutes")
-
-        elif choice == "2":
-            task = input("Task description: ")
-            actual = float(input("Actual time taken (minutes): "))
-            predictor.update(task, actual)
-            print("✅ Data added. AI improved.")
-
-        elif choice == "3":
-            break
-
-        else:
-            print("Invalid choice")
-
-if __name__ == "__main__":
-    main()
