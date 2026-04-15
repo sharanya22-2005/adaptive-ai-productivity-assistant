@@ -7,6 +7,7 @@ from backend.store import add_task, get_tasks
 from backend.scheduler import generate_schedule
 from ai_module.insights import generate_insights
 from alarm_chatbot.chatbot import chatbot
+from alarm_chatbot.alarm import start_alarm
 
 app = FastAPI()
 
@@ -51,3 +52,8 @@ def chat_api(query: str):
 @app.get("/status")
 def status():
     return {"status": "AI system active"}
+
+@app.get("/alarm")
+def alarm_api(time: str, task: str):
+    start_alarm(time, task)
+    return {"message": "Alarm set successfully"}
